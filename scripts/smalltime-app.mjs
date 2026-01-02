@@ -407,7 +407,7 @@ Hooks.on('canvasReady', () => {
 
 Hooks.on('ready', () => {
   // Send incoming socket emissions through the async function.
-  game.socket.on(`module.smalltime`, (data) => {
+  game.socket.on(`module.smalltime-hack`, (data) => {
     doSocket(data);
   });
 
@@ -1081,7 +1081,7 @@ class SmallTimeApp extends FormApplication {
 
   // Helper function for handling sockets.
   static emitSocket(type, payload) {
-    game.socket.emit('module.smalltime', {
+    game.socket.emit('module.smalltime-hack', {
       type: type,
       payload: payload,
     });
