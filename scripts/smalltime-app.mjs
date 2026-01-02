@@ -1,9 +1,10 @@
 import { Helpers, ST_Config } from './helpers.mjs';
+const MODULE_ID = "smalltime-hack";
 
 Hooks.on('init', () => {
   Helpers.configureReleaseSpecificStuff();
 
-  game.keybindings.register('smalltime', 'toggle-hotkey', {
+  game.keybindings.register(MODULE_ID, 'toggle-hotkey', {
     name: game.i18n.localize('SMLTME.Toggle_Hotkey'),
     hint: game.i18n.localize('SMLTME.Toggle_Hotkey_Hint'),
     editable: [{ key: 'KeyS', modifiers: ['SHIFT'] }],
@@ -15,7 +16,7 @@ Hooks.on('init', () => {
     },
   });
 
-  game.settings.register('smalltime', 'current-date', {
+  game.settings.register(MODULE_ID, 'current-date', {
     name: 'Current Date',
     scope: 'world',
     config: false,
@@ -23,7 +24,7 @@ Hooks.on('init', () => {
     default: '',
   });
 
-  game.settings.register('smalltime', 'position', {
+  game.settings.register(MODULE_ID, 'position', {
     name: 'Position',
     scope: 'client',
     config: false,
@@ -31,7 +32,7 @@ Hooks.on('init', () => {
     default: { top: 446, left: 15 },
   });
 
-  game.settings.register('smalltime', 'pinned', {
+  game.settings.register(MODULE_ID, 'pinned', {
     name: 'Pinned',
     scope: 'client',
     config: false,
@@ -39,7 +40,7 @@ Hooks.on('init', () => {
     default: true,
   });
 
-  game.settings.register('smalltime', 'visible', {
+  game.settings.register(MODULE_ID, 'visible', {
     name: 'Visible',
     scope: 'client',
     config: false,
@@ -47,7 +48,7 @@ Hooks.on('init', () => {
     default: true,
   });
 
-  game.settings.register('smalltime', 'date-showing', {
+  game.settings.register(MODULE_ID, 'date-showing', {
     name: 'Date Showing',
     scope: 'client',
     config: false,
@@ -55,7 +56,7 @@ Hooks.on('init', () => {
     default: false,
   });
 
-  game.settings.register('smalltime', 'player-visibility-default', {
+  game.settings.register(MODULE_ID, 'player-visibility-default', {
     name: game.i18n.localize('SMLTME.Player_Visibility_Default'),
     hint: game.i18n.localize('SMLTME.Player_Visibility_Default_Hint'),
     scope: 'world',
@@ -69,7 +70,7 @@ Hooks.on('init', () => {
     default: 2,
   });
 
-  game.settings.register('smalltime', 'time-format', {
+  game.settings.register(MODULE_ID, 'time-format', {
     name: game.i18n.localize('SMLTME.Time_Format'),
     scope: 'world',
     config: true,
@@ -81,7 +82,7 @@ Hooks.on('init', () => {
     default: 12,
   });
 
-  game.settings.register('smalltime', 'show-seconds', {
+  game.settings.register(MODULE_ID, 'show-seconds', {
     name: game.i18n.localize('SMLTME.Show_Seconds'),
     scope: 'world',
     config: true,
@@ -94,7 +95,7 @@ Hooks.on('init', () => {
   const calendarProviders = Helpers.getCalendarProviders();
   const calendarAvailable = Object.keys(calendarProviders).length > 0 ? true : false;
 
-  game.settings.register('smalltime', 'date-format', {
+  game.settings.register(MODULE_ID, 'date-format', {
     name: game.i18n.localize('SMLTME.Date_Format'),
     scope: 'world',
     config: calendarAvailable,
@@ -117,7 +118,7 @@ Hooks.on('init', () => {
     default: 0,
   });
 
-  game.settings.register('smalltime', 'calendar-provider', {
+  game.settings.register(MODULE_ID, 'calendar-provider', {
     name: game.i18n.localize('SMLTME.Calendar_Provider'),
     hint: game.i18n.localize('SMLTME.Calendar_Provider_Hint'),
     scope: 'world',
@@ -127,7 +128,7 @@ Hooks.on('init', () => {
     default: 'sc',
   });
 
-  game.settings.register('smalltime', 'small-step', {
+  game.settings.register(MODULE_ID, 'small-step', {
     name: game.i18n.localize('SMLTME.Small_Step'),
     hint: game.i18n.localize('SMLTME.Small_Step_Hint'),
     scope: 'world',
@@ -145,7 +146,7 @@ Hooks.on('init', () => {
     default: 10,
   });
 
-  game.settings.register('smalltime', 'large-step', {
+  game.settings.register(MODULE_ID, 'large-step', {
     name: game.i18n.localize('SMLTME.Large_Step'),
     hint: game.i18n.localize('SMLTME.Large_Step_Hint'),
     scope: 'world',
@@ -162,7 +163,7 @@ Hooks.on('init', () => {
     default: 60,
   });
 
-  game.settings.register('smalltime', 'opacity', {
+  game.settings.register(MODULE_ID, 'opacity', {
     name: game.i18n.localize('SMLTME.Resting_Opacity'),
     hint: game.i18n.localize('SMLTME.Resting_Opacity_Hint'),
     scope: 'client',
@@ -180,42 +181,42 @@ Hooks.on('init', () => {
     },
   });
 
-  game.settings.register('smalltime', 'max-darkness', {
+  game.settings.register(MODULE_ID, 'max-darkness', {
     scope: 'world',
     config: true,
     type: Number,
     default: ST_Config.MaxDarknessDefault,
   });
 
-  game.settings.register('smalltime', 'min-darkness', {
+  game.settings.register(MODULE_ID, 'min-darkness', {
     scope: 'world',
     config: true,
     type: Number,
     default: ST_Config.MinDarknessDefault,
   });
 
-  game.settings.register('smalltime', 'sunrise-start', {
+  game.settings.register(MODULE_ID, 'sunrise-start', {
     scope: 'world',
     config: true,
     type: Number,
     default: ST_Config.SunriseStartDefault,
   });
 
-  game.settings.register('smalltime', 'sunrise-end', {
+  game.settings.register(MODULE_ID, 'sunrise-end', {
     scope: 'world',
     config: true,
     type: Number,
     default: ST_Config.SunriseEndDefault,
   });
 
-  game.settings.register('smalltime', 'sunset-start', {
+  game.settings.register(MODULE_ID, 'sunset-start', {
     scope: 'world',
     config: true,
     type: Number,
     default: ST_Config.SunsetStartDefault,
   });
 
-  game.settings.register('smalltime', 'sunset-end', {
+  game.settings.register(MODULE_ID, 'sunset-end', {
     name: game.i18n.localize('SMLTME.Darkness_Config'),
     hint: game.i18n.localize('SMLTME.Darkness_Config_Hint'),
     scope: 'world',
@@ -224,7 +225,7 @@ Hooks.on('init', () => {
     default: ST_Config.SunsetEndDefault,
   });
 
-  game.settings.register('smalltime', 'sun-sync', {
+  game.settings.register(MODULE_ID, 'sun-sync', {
     name: game.i18n.localize('SMLTME.Sun_Sync'),
     hint: game.i18n.localize('SMLTME.Sun_Sync_Hint'),
     scope: 'world',
@@ -233,7 +234,7 @@ Hooks.on('init', () => {
     default: false,
   });
 
-  game.settings.register('smalltime', 'darkness-default', {
+  game.settings.register(MODULE_ID, 'darkness-default', {
     name: game.i18n.localize('SMLTME.Darkness_Default'),
     hint: game.i18n.localize('SMLTME.Darkness_Default_Hint'),
     scope: 'world',
@@ -242,7 +243,7 @@ Hooks.on('init', () => {
     default: false,
   });
 
-  game.settings.register('smalltime', 'moon-darkness', {
+  game.settings.register(MODULE_ID, 'moon-darkness', {
     name: game.i18n.localize('SMLTME.Moon_Darkness'),
     hint: game.i18n.localize('SMLTME.Moon_Darkness_Hint'),
     scope: 'world',
@@ -251,7 +252,7 @@ Hooks.on('init', () => {
     default: false,
   });
 
-  game.settings.register('smalltime', 'moon-tint', {
+  game.settings.register(MODULE_ID, 'moon-tint', {
     name: game.i18n.localize('SMLTME.Moon_Tint'),
     hint: game.i18n.localize('SMLTME.Moon_Tint_Hint'),
     scope: 'world',
@@ -260,7 +261,7 @@ Hooks.on('init', () => {
     default: false,
   });
 
-  game.settings.register('smalltime', 'phase-impact', {
+  game.settings.register(MODULE_ID, 'phase-impact', {
     name: game.i18n.localize('SMLTME.Phase_Impact'),
     hint: game.i18n.localize('SMLTME.Phase_Impact_Hint'),
     scope: 'world',
@@ -274,7 +275,7 @@ Hooks.on('init', () => {
     default: 0.4,
   });
 
-  game.settings.register('smalltime', 'allow-trusted', {
+  game.settings.register(MODULE_ID, 'allow-trusted', {
     name: game.i18n.localize('SMLTME.Allow_Trusted'),
     hint: game.i18n.localize('SMLTME.Allow_Trusted_Hint'),
     scope: 'world',
@@ -283,7 +284,7 @@ Hooks.on('init', () => {
     default: false,
   });
 
-  game.settings.register('smalltime', 'moon-phase', {
+  game.settings.register(MODULE_ID, 'moon-phase', {
     name: 'Moon Phase',
     scope: 'world',
     config: false,
@@ -295,43 +296,43 @@ Hooks.on('init', () => {
 
 Hooks.on('setup', () => {
   // Only allow the date display to show if there's a calendar provider available.
-  game.modules.get('smalltime').dateAvailable = false;
+  game.modules.get(MODULE_ID).dateAvailable = false;
   if (game.system.id === 'pf2e' || game.modules.get('foundryvtt-simple-calendar')?.active || game.modules.get('calendar-weather')?.active) {
-    game.modules.get('smalltime').dateAvailable = true;
+    game.modules.get(MODULE_ID).dateAvailable = true;
   }
 
   // Check and set the correct level of authorization for the current user.
-  game.modules.get('smalltime').viewAuth = false;
-  game.modules.get('smalltime').clockAuth = false;
-  game.modules.get('smalltime').controlAuth = false;
+  game.modules.get(MODULE_ID).viewAuth = false;
+  game.modules.get(MODULE_ID).clockAuth = false;
+  game.modules.get(MODULE_ID).controlAuth = false;
   // First give view & control to Assistants and GMs.
   if (game.user.role >= CONST.USER_ROLES.ASSISTANT) {
-    game.modules.get('smalltime').viewAuth = true;
-    game.modules.get('smalltime').clockAuth = true;
-    game.modules.get('smalltime').controlAuth = true;
+    game.modules.get(MODULE_ID).viewAuth = true;
+    game.modules.get(MODULE_ID).clockAuth = true;
+    game.modules.get(MODULE_ID).controlAuth = true;
   }
 
   // If the scene is set to use Default vis level, use it here.
   const thisScene = game.scenes.viewed;
-  let visLevel = thisScene?.getFlag?.('smalltime', 'player-vis');
+  let visLevel = thisScene?.getFlag?.(MODULE_ID, 'player-vis');
   // visLevel of 3 is "use default".
   if (visLevel == 3 || visLevel == undefined) {
-    visLevel = game.settings.get('smalltime', 'player-visibility-default');
+    visLevel = game.settings.get(MODULE_ID, 'player-visibility-default');
   }
   // Give basic view auth to players if they're allowed in this scene.
   if (visLevel > 0) {
-    game.modules.get('smalltime').viewAuth = true;
+    game.modules.get(MODULE_ID).viewAuth = true;
   }
   // Also give them the clock if the permission level allows.
   if (visLevel > 1) {
-    game.modules.get('smalltime').clockAuth = true;
+    game.modules.get(MODULE_ID).clockAuth = true;
   }
   // If the Allow Trusted Player Control setting is on, give Trusted
   // Players control privs as well.
-  if (game.settings.get('smalltime', 'allow-trusted') && game.user.role === CONST.USER_ROLES.TRUSTED) {
-    game.modules.get('smalltime').viewAuth = true;
-    game.modules.get('smalltime').clockAuth = true;
-    game.modules.get('smalltime').controlAuth = true;
+  if (game.settings.get(MODULE_ID, 'allow-trusted') && game.user.role === CONST.USER_ROLES.TRUSTED) {
+    game.modules.get(MODULE_ID).viewAuth = true;
+    game.modules.get(MODULE_ID).clockAuth = true;
+    game.modules.get(MODULE_ID).controlAuth = true;
   }
 });
 
@@ -339,8 +340,8 @@ Hooks.on('canvasInit', () => {
   // Start by resetting the Darkness color to the core value.
   CONFIG.Canvas.darknessColor = ST_Config.coreDarknessColor;
 
-  if (game.modules.get('foundryvtt-simple-calendar')?.active && game.settings.get('smalltime', 'moon-tint')) {
-    if (game.scenes.viewed.getFlag('smalltime', 'darkness-link')) {
+  if (game.modules.get('foundryvtt-simple-calendar')?.active && game.settings.get(MODULE_ID, 'moon-tint')) {
+    if (game.scenes.viewed.getFlag(MODULE_ID, 'darkness-link')) {
       // Set the global Darkness color to the color of the first moon in Simple Calendar, if configured.
       // The pSBC function drops the brightness to an appropriate level.
       // Ignore if the moon is set to its default color of white.
@@ -358,45 +359,45 @@ Hooks.on('canvasInit', () => {
 
 // Set the initial state for newly rendered scenes.
 Hooks.on('canvasReady', () => {
-  if (game.modules.get('smalltime').viewAuth) {
+  if (game.modules.get(MODULE_ID).viewAuth) {
     SmallTimeApp.toggleAppVis('initial');
-    if (game.settings.get('smalltime', 'pinned')) {
+    if (game.settings.get(MODULE_ID, 'pinned')) {
       SmallTimeApp.pinApp();
     }
-  } else if (SmallTimeApp._isOpen && !game.modules.get('smalltime').controlAuth) {
+  } else if (SmallTimeApp._isOpen && !game.modules.get(MODULE_ID).controlAuth) {
     // If the SmallTime app was visible, but we're now in a scene where
     // the player doesn't have permission to view it, close the app.
-    game.modules.get('smalltime').myApp.close({ smallTime: true });
+    game.modules.get(MODULE_ID).myApp.close({ smallTime: true });
   }
   // Collapse the display if the user isn't allowed to see the clock.
-  if (!game.modules.get('smalltime').clockAuth) {
-    game.settings.set('smalltime', 'date-showing', false);
+  if (!game.modules.get(MODULE_ID).clockAuth) {
+    game.settings.set(MODULE_ID, 'date-showing', false);
     document.documentElement.style.setProperty('--SMLTME-display-vis', 'none');
   } else {
     document.documentElement.style.setProperty('--SMLTME-display-vis', 'flex');
   }
   // Render at opacity per user prefs.
-  const userOpacity = game.settings.get('smalltime', 'opacity');
+  const userOpacity = game.settings.get(MODULE_ID, 'opacity');
   document.documentElement.style.setProperty('--SMLTME-opacity', userOpacity);
 
   // Refresh Darkness even if the viewer isn't a GM / controller.
   const thisScene = game.scenes.viewed;
-  if (thisScene?.getFlag('smalltime', 'darkness-link')) {
+  if (thisScene?.getFlag(MODULE_ID, 'darkness-link')) {
     SmallTimeApp.timeTransition(Helpers.getWorldTimeAsDayTime());
   }
 
-  if (game.modules.get('smalltime').controlAuth) {
-    const darknessDefault = game.settings.get('smalltime', 'darkness-default');
-    const visDefault = game.settings.get('smalltime', 'player-visibility-default');
+  if (game.modules.get(MODULE_ID).controlAuth) {
+    const darknessDefault = game.settings.get(MODULE_ID, 'darkness-default');
+    const visDefault = game.settings.get(MODULE_ID, 'player-visibility-default');
     const thisScene = game.scenes.viewed;
 
     // Set the Darkness link state to the default choice.
-    if (!foundry.utils.hasProperty(thisScene, 'flags.smalltime.darkness-link')) {
-      thisScene.setFlag('smalltime', 'darkness-link', darknessDefault);
+    if (!foundry.utils.hasProperty(thisScene, 'flags.smalltime-hack.darkness-link')) {
+      thisScene.setFlag(MODULE_ID, 'darkness-link', darknessDefault);
     }
     // Set the Player Vis state to the default choice.
-    if (!foundry.utils.hasProperty(thisScene, 'flags.smalltime.player-vis')) {
-      thisScene.setFlag('smalltime', 'player-vis', visDefault);
+    if (!foundry.utils.hasProperty(thisScene, 'flags.smalltime-hack.player-vis')) {
+      thisScene.setFlag(MODULE_ID, 'player-vis', visDefault);
     }
 
 
@@ -450,7 +451,7 @@ Hooks.on('ready', () => {
 // account for the date display, if showing.
 Hooks.on('renderSmallTimeApp', () => {
   // Disable controls for non-GMs.
-  if (!game.modules.get('smalltime').controlAuth) {
+  if (!game.modules.get(MODULE_ID).controlAuth) {
     document.documentElement.style.setProperty('--SMLTME-pointer-events', 'none');
     $('#decrease-large').addClass('hide-for-players');
     $('#decrease-small').addClass('hide-for-players');
@@ -458,14 +459,14 @@ Hooks.on('renderSmallTimeApp', () => {
     $('#increase-small').addClass('hide-for-players');
   }
   // Also manage the height of the app window to match the contents.
-  if (!game.modules.get('smalltime').clockAuth) {
+  if (!game.modules.get(MODULE_ID).clockAuth) {
     $('#timeDisplay').addClass('hide-for-players');
     $('#smalltime-app').css({ height: '35px' });
   } else {
     $('#timeDisplay').removeClass('hide-for-players');
     $('#smalltime-app').css({ height: '58px' });
   }
-  if (game.settings.get('smalltime', 'date-showing') && game.modules.get('smalltime').dateAvailable) {
+  if (game.settings.get(MODULE_ID, 'date-showing') && game.modules.get(MODULE_ID).dateAvailable) {
     $('#smalltime-app').addClass('show-date');
     $('#smalltime-app').css({ height: '79px' });
   }
@@ -478,22 +479,22 @@ Hooks.on('renderSceneConfig', async (obj) => {
   if (!obj.isEditable) return;
   // Set defaults here (duplicate of what we did on canvasReady, in case the
   // scene config is being accessed for a non-rendered scene.
-  const darknessDefault = game.settings.get('smalltime', 'darkness-default');
-  const visDefault = game.settings.get('smalltime', 'player-visibility-default');
+  const darknessDefault = game.settings.get(MODULE_ID, 'darkness-default');
+  const visDefault = game.settings.get(MODULE_ID, 'player-visibility-default');
   // Set the Darkness link state to the default choice.
-  if (!foundry.utils.hasProperty(obj.document, 'flags.smalltime.darkness-link')) {
-    await obj.document.setFlag('smalltime', 'darkness-link', darknessDefault);
+  if (!foundry.utils.hasProperty(obj.document, 'flags.smalltime-hack.darkness-link')) {
+    await obj.document.setFlag(MODULE_ID, 'darkness-link', darknessDefault);
   }
   // Set the Player Vis state to the default choice.
-  if (!foundry.utils.hasProperty(obj.document, 'flags.smalltime.player-vis')) {
-    await obj.document.setFlag('smalltime', 'player-vis', visDefault);
+  if (!foundry.utils.hasProperty(obj.document, 'flags.smalltime-hack.player-vis')) {
+    await obj.document.setFlag(MODULE_ID, 'player-vis', visDefault);
   }
 
   // Set the Player Vis dropdown as appropriate.
-  const visChoice = obj.document.getFlag('smalltime', 'player-vis');
+  const visChoice = obj.document.getFlag(MODULE_ID, 'player-vis');
   // Set the Darkness and Moonlight checkboxes as appropriate.
-  const darknessCheckStatus = obj.document.getFlag('smalltime', 'darkness-link') ? 'checked' : '';
-  const moonlightCheckStatus = obj.document.getFlag('smalltime', 'moonlight') ? 'checked' : '';
+  const darknessCheckStatus = obj.document.getFlag(MODULE_ID, 'darkness-link') ? 'checked' : '';
+  const moonlightCheckStatus = obj.document.getFlag(MODULE_ID, 'moonlight') ? 'checked' : '';
 
   // Build our new options.
   const visibilityLabel = game.i18n.localize('SMLTME.Player_Visibility');
@@ -520,12 +521,12 @@ Hooks.on('renderSceneConfig', async (obj) => {
   const injection = `
     <fieldset class="st-scene-config">
       <legend>
-        <img id="smalltime-config-icon" src="modules/smalltime/images/smalltime-icon.webp">
+        <img id="smalltime-config-icon" src="modules/smalltime-hack/images/smalltime-icon.webp">
         <span>SmallTime</span>
       </legend>
       <div class="form-group">
         <label>${visibilityLabel}</label>
-        <select name="flags.smalltime.player-vis" data-dtype="number">
+        <select name="flags.smalltime-hack.player-vis" data-dtype="number">
           <option value="2" ${vis2}>${vis2text}</option>
           <option value="1" ${vis1}>${vis1text}</option>
           <option value="0" ${vis0}>${vis0text}</option>
@@ -536,7 +537,7 @@ Hooks.on('renderSceneConfig', async (obj) => {
         <label>${controlLabel}</label>
         <input
           type="checkbox"
-          name="flags.smalltime.darkness-link"
+          name="flags.smalltime-hack.darkness-link"
           ${darknessCheckStatus}>
         <p class="hint">${controlHint}</p>
       </div>
@@ -544,7 +545,7 @@ Hooks.on('renderSceneConfig', async (obj) => {
         <label>${moonlightLabel}</label>
         <input ${moonlightDisabledPF2e}
           type="checkbox"
-          name="flags.smalltime.moonlight"
+          name="flags.smalltime-hack.moonlight"
           ${moonlightCheckStatus}>
         <p class="hint">${moonlightHint}</p>
       </div>
@@ -561,7 +562,7 @@ Hooks.on('renderSceneConfig', async (obj) => {
   // Re-auto-size the app window.
   obj.setPosition();
 
-  if (obj.document.getFlag('smalltime', 'moonlight')) {
+  if (obj.document.getFlag(MODULE_ID, 'moonlight')) {
     const currentThreshold = `obj.document.data.${ST_Config.GlobalThresholdPath}`;
     const coreThresholdCheckbox = $('input[name="hasGlobalThreshold"]');
     coreThresholdCheckbox.attr({
@@ -592,7 +593,7 @@ Hooks.on('renderSettingsConfig', (obj) => {
   // Reset to pinned position on Shift-click, and refresh the page.
   $(opacityTitleElement).on('click', function () {
     if (event.shiftKey) {
-      game.settings.set('smalltime', 'pinned', true);
+      game.settings.set(MODULE_ID, 'pinned', true);
       window.location.reload(false);
     }
   });
@@ -610,7 +611,7 @@ Hooks.on('renderSettingsConfig', (obj) => {
   }
 
   // Hide the Show Seconds setting if we're not using 24hr time.
-  if (game.settings.get('smalltime', 'time-format') == 12) {
+  if (game.settings.get(MODULE_ID, 'time-format') == 12) {
     $('input[name="smalltime.show-seconds"]').parent().parent().css('display', 'none');
   }
 
@@ -636,7 +637,7 @@ Hooks.on('renderSettingsConfig', (obj) => {
   $('select[name="smalltime.date-format"]')
     .children('option')
     .each(function () {
-      this.text = Helpers.getDate(game.settings.get('smalltime', 'calendar-provider'), this.value);
+      this.text = Helpers.getDate(game.settings.get(MODULE_ID, 'calendar-provider'), this.value);
     });
 
   // Hide the elements for the threshold settings; we'll be changing
@@ -658,12 +659,12 @@ Hooks.on('renderSettingsConfig', (obj) => {
   // Reset to defaults on Shift-click, and close the window.
   $(darknessTitleElement).on('click', function () {
     if (event.shiftKey) {
-      game.settings.set('smalltime', 'sunrise-start', ST_Config.SunriseStartDefault);
-      game.settings.set('smalltime', 'sunrise-end', ST_Config.SunriseEndDefault);
-      game.settings.set('smalltime', 'sunset-start', ST_Config.SunsetStartDefault);
-      game.settings.set('smalltime', 'sunset-end', ST_Config.SunsetEndDefault);
-      game.settings.set('smalltime', 'max-darkness', ST_Config.MaxDarknessDefault);
-      game.settings.set('smalltime', 'min-darkness', ST_Config.MinDarknessDefault);
+      game.settings.set(MODULE_ID, 'sunrise-start', ST_Config.SunriseStartDefault);
+      game.settings.set(MODULE_ID, 'sunrise-end', ST_Config.SunriseEndDefault);
+      game.settings.set(MODULE_ID, 'sunset-start', ST_Config.SunsetStartDefault);
+      game.settings.set(MODULE_ID, 'sunset-end', ST_Config.SunsetEndDefault);
+      game.settings.set(MODULE_ID, 'max-darkness', ST_Config.MaxDarknessDefault);
+      game.settings.set(MODULE_ID, 'min-darkness', ST_Config.MinDarknessDefault);
 
       Object.values(ui.windows).forEach((app) => {
         if (app.options.id === 'client-settings') app.close();
@@ -737,9 +738,9 @@ Hooks.on('closeSettingsConfig', () => {
 
 // Add a toggle button inside the Journal Notes tool layer.
 Hooks.on('getSceneControlButtons', (controls) => {
-  if (game.modules.get('smalltime').viewAuth) {
+  if (game.modules.get(MODULE_ID).viewAuth) {
     controls.notes.tools.smalltime = {
-      name: 'smalltime',
+      name: MODULE_ID,
       title: 'Toggle SmallTime',
       icon: 'fas fa-adjust',
       onChange: (event, active) => {
@@ -775,7 +776,7 @@ class SmallTimeApp extends FormApplication {
 
   async _render(force = false, options = {}) {
     await super._render(force, options);
-    if (game.settings.get('smalltime', 'pinned')) {
+    if (game.settings.get(MODULE_ID, 'pinned')) {
       SmallTimeApp.pinApp();
     }
     SmallTimeApp._isOpen = true;
@@ -788,7 +789,7 @@ class SmallTimeApp extends FormApplication {
     // If called by SmallTime, record that it is not longer visible.
     if (options.smallTime) {
       SmallTimeApp._isOpen = false;
-      game.settings.set('smalltime', 'visible', false);
+      game.settings.set(MODULE_ID, 'visible', false);
     }
     return super.close(options);
   }
@@ -802,7 +803,7 @@ class SmallTimeApp extends FormApplication {
     const playerApp = document.getElementById('players');
     const playerAppPos = playerApp.getBoundingClientRect();
 
-    this.initialPosition = game.settings.get('smalltime', 'position');
+    this.initialPosition = game.settings.get(MODULE_ID, 'position');
 
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['form'],
@@ -810,7 +811,7 @@ class SmallTimeApp extends FormApplication {
       submitOnChange: true,
       closeOnSubmit: false,
       minimizable: false,
-      template: 'modules/smalltime/templates/smalltime.html',
+      template: 'modules/smalltime-hack/templates/smalltime.html',
       id: 'smalltime-app',
       title: 'SmallTime',
       top: this.initialPosition.top,
@@ -835,7 +836,7 @@ class SmallTimeApp extends FormApplication {
       timeValue: this.currentTime,
       hourString: SmallTimeApp.convertTimeIntegerToDisplay(this.currentTime).hours,
       minuteString: SmallTimeApp.convertTimeIntegerToDisplay(this.currentTime).minutes,
-      dateString: game.settings.get('smalltime', 'current-date'),
+      dateString: game.settings.get(MODULE_ID, 'current-date'),
     };
   }
 
@@ -902,12 +903,12 @@ class SmallTimeApp extends FormApplication {
       // If the mouseup happens inside the Pin zone, pin the app.
       if (pinZone) {
         SmallTimeApp.pinApp();
-        await game.settings.set('smalltime', 'pinned', true);
+        await game.settings.set(MODULE_ID, 'pinned', true);
       } else {
         let windowPos = $('#smalltime-app').position();
         let newPos = { top: windowPos.top, left: windowPos.left };
-        await game.settings.set('smalltime', 'position', newPos);
-        await game.settings.set('smalltime', 'pinned', false);
+        await game.settings.set(MODULE_ID, 'position', newPos);
+        await game.settings.set(MODULE_ID, 'pinned', false);
       }
 
       // Kill the jiggle animation on mouseUp.
@@ -921,19 +922,19 @@ class SmallTimeApp extends FormApplication {
 
     // Handle cycling through the moon phases on Shift-clicks.
     $('#timeSlider').on('click', async function () {
-      if (event.shiftKey && game.modules.get('smalltime').controlAuth) {
-        const startingPhase = game.settings.get('smalltime', 'moon-phase');
+      if (event.shiftKey && game.modules.get(MODULE_ID).controlAuth) {
+        const startingPhase = game.settings.get(MODULE_ID, 'moon-phase');
         const newPhase = (startingPhase + 1) % ST_Config.MoonPhases.length;
 
         document.documentElement.style.setProperty('--SMLTME-phaseURL', `url('../images/moon-phases/${ST_Config.MoonPhases[newPhase]}.webp')`);
 
         // Set and broadcast the change.
         if (game.user.isGM) {
-          await game.settings.set('smalltime', 'moon-phase', newPhase);
+          await game.settings.set(MODULE_ID, 'moon-phase', newPhase);
           Helpers.adjustMoonlight([newPhase]);
         } else {
           SmallTimeApp.emitSocket('changeSetting', {
-            scope: 'smalltime',
+            scope: MODULE_ID,
             key: 'moon-phase',
             value: newPhase,
           });
@@ -972,7 +973,7 @@ class SmallTimeApp extends FormApplication {
     // The inline CSS overrides are a bit hacky, but were the
     // only way I could get the desired behaviour.
     html.find('#timeDisplay').on('click', async function () {
-      if (event.shiftKey && game.modules.get('smalltime').controlAuth && !game.paused && game.modules.get('foundryvtt-simple-calendar')?.active) {
+      if (event.shiftKey && game.modules.get(MODULE_ID).controlAuth && !game.paused && game.modules.get('foundryvtt-simple-calendar')?.active) {
         if (SimpleCalendar.api.clockStatus().started) {
           SimpleCalendar.api.stopClock();
         } else {
@@ -983,35 +984,35 @@ class SmallTimeApp extends FormApplication {
         }
         SmallTimeApp.emitSocket('handleRealtime');
       } else {
-        if (!game.settings.get('smalltime', 'date-showing') && game.modules.get('smalltime').dateAvailable) {
+        if (!game.settings.get(MODULE_ID, 'date-showing') && game.modules.get(MODULE_ID).dateAvailable) {
           $('#smalltime-app').addClass('show-date');
           $('#smalltime-app').animate({ height: '79px' }, 80);
-          if (game.settings.get('smalltime', 'pinned')) {
+          if (game.settings.get(MODULE_ID, 'pinned')) {
             SmallTimeApp.unPinApp();
             SmallTimeApp.pinApp();
           }
-          await game.settings.set('smalltime', 'date-showing', true);
+          await game.settings.set(MODULE_ID, 'date-showing', true);
         } else {
           $('#smalltime-app').removeClass('show-date');
           $('#smalltime-app').animate({ height: '59px' }, 80);
-          if (game.settings.get('smalltime', 'pinned')) {
+          if (game.settings.get(MODULE_ID, 'pinned')) {
             SmallTimeApp.unPinApp();
             SmallTimeApp.pinApp();
           }
-          await game.settings.set('smalltime', 'date-showing', false);
+          await game.settings.set(MODULE_ID, 'date-showing', false);
         }
       }
     });
 
     // Open the Simple Calendar interface on date clicks.
     html.find('#dateDisplay').on('click', async function () {
-      if (game.settings.get('smalltime', 'calendar-provider') === 'sc' && game.modules.get('foundryvtt-simple-calendar')?.active)
+      if (game.settings.get(MODULE_ID, 'calendar-provider') === 'sc' && game.modules.get('foundryvtt-simple-calendar')?.active)
         SimpleCalendar.api.showCalendar();
     });
 
     // Handle the increment/decrement buttons.
-    let smallStep = game.settings.get('smalltime', 'small-step');
-    let largeStep = game.settings.get('smalltime', 'large-step');
+    let smallStep = game.settings.get(MODULE_ID, 'small-step');
+    let largeStep = game.settings.get(MODULE_ID, 'large-step');
     let stepAmount;
 
     html.find('#decrease-small').on('click', () => {
@@ -1072,7 +1073,7 @@ class SmallTimeApp extends FormApplication {
           newPhases.push(newPhase);
         });
 
-        await game.settings.set('smalltime', 'moon-phase', newPhases[0]);
+        await game.settings.set(MODULE_ID, 'moon-phase', newPhases[0]);
         SmallTimeApp.timeTransition(Helpers.getWorldTimeAsDayTime());
         Helpers.adjustMoonlight(newPhases);
       });
@@ -1110,10 +1111,10 @@ class SmallTimeApp extends FormApplication {
 
   // Render changes to the sun/moon slider, and handle Darkness link.
   static async timeTransition(timeNow) {
-    let sunriseStart = game.settings.get('smalltime', 'sunrise-start');
-    let sunriseEnd = game.settings.get('smalltime', 'sunrise-end');
-    let sunsetStart = game.settings.get('smalltime', 'sunset-start');
-    let sunsetEnd = game.settings.get('smalltime', 'sunset-end');
+    let sunriseStart = game.settings.get(MODULE_ID, 'sunrise-start');
+    let sunriseEnd = game.settings.get(MODULE_ID, 'sunrise-end');
+    let sunsetStart = game.settings.get(MODULE_ID, 'sunset-start');
+    let sunsetEnd = game.settings.get(MODULE_ID, 'sunset-end');
 
     const midnight = 1440;
 
@@ -1126,7 +1127,7 @@ class SmallTimeApp extends FormApplication {
 
     // Swap out the moon for the sun during daytime,
     // changing phase as appropriate.
-    const currentPhase = game.settings.get('smalltime', 'moon-phase');
+    const currentPhase = game.settings.get(MODULE_ID, 'moon-phase');
 
     if (timeNow >= sunriseEnd && timeNow < sunsetStart) {
       $('#timeSlider').removeClass('moon');
@@ -1139,19 +1140,19 @@ class SmallTimeApp extends FormApplication {
 
     // If requested, adjust the scene's Darkness level.
     const currentScene = canvas.scene;
-    if (currentScene.getFlag('smalltime', 'darkness-link')) {
+    if (currentScene.getFlag(MODULE_ID, 'darkness-link')) {
 
       let darknessValue = canvas.darknessLevel;
-      const maxD = game.settings.get('smalltime', 'max-darkness');
-      const minD = game.settings.get('smalltime', 'min-darkness');
+      const maxD = game.settings.get(MODULE_ID, 'max-darkness');
+      const minD = game.settings.get(MODULE_ID, 'min-darkness');
 
       // Clamp the values between 0 and 1 just in case they're out of bounds.
       let maxDarkness = Math.min(Math.max(maxD, 0), 1);
       let minDarkness = Math.min(Math.max(minD, 0), 1);
 
       // If requested, adjust max Darkness based on moon phase.
-      if (game.settings.get('smalltime', 'moon-darkness')) {
-        const moonlightFactor = game.settings.get('smalltime', 'phase-impact'); // Percentage by which available moonlight reduces max Darkness.
+      if (game.settings.get(MODULE_ID, 'moon-darkness')) {
+        const moonlightFactor = game.settings.get(MODULE_ID, 'phase-impact'); // Percentage by which available moonlight reduces max Darkness.
         const moonlightMultiplier = moonlightFactor * ST_Config.PhaseValues[currentPhase];
         maxDarkness = Math.round((1 - maxDarkness * moonlightMultiplier) * 100) / 100;
       }
@@ -1203,7 +1204,7 @@ class SmallTimeApp extends FormApplication {
     if (theMinutes < 10) theMinutes = `0${theMinutes}`;
     if (theMinutes === 0) theMinutes = '00';
 
-    if (game.settings.get('smalltime', 'time-format') === 12) {
+    if (game.settings.get(MODULE_ID, 'time-format') === 12) {
       if (theHours >= 12) {
         if (theHours === 12) {
           theMinutes = `${theMinutes} PM`;
@@ -1227,7 +1228,7 @@ class SmallTimeApp extends FormApplication {
 
   // Pin the app above the Players list inside the ui-left container.
   static async pinApp() {
-    const app = game.modules.get('smalltime').myApp;
+    const app = game.modules.get(MODULE_ID).myApp;
     if (app && !app.element.hasClass('pinned')) {
       $('#players').before(app.element);
       app.element.addClass('pinned');
@@ -1236,7 +1237,7 @@ class SmallTimeApp extends FormApplication {
 
   // Un-pin the app.
   static unPinApp() {
-    const app = game.modules.get('smalltime').myApp;
+    const app = game.modules.get(MODULE_ID).myApp;
     if (app && app.element.hasClass('pinned')) {
       const element = app.element;
       $('body').append(element);
@@ -1247,9 +1248,9 @@ class SmallTimeApp extends FormApplication {
 
   // Toggle visibility of the main window.
   static async toggleAppVis(mode) {
-    if (!game.modules.get('smalltime').viewAuth) return;
+    if (!game.modules.get(MODULE_ID).viewAuth) return;
     if (mode === 'toggle') {
-      if (game.settings.get('smalltime', 'visible') === true) {
+      if (game.settings.get(MODULE_ID, 'visible') === true) {
         // Stop any currently-running animations, and then animate the app
         // away before close(), to avoid the stock close() animation.
         $('#smalltime-app').stop();
@@ -1257,31 +1258,31 @@ class SmallTimeApp extends FormApplication {
         setTimeout(function () {
           // Pass an object to .close() to indicate that it came from SmallTime,
           // and not from an Escape keypress.
-          game.modules.get('smalltime').myApp.close({ smallTime: true });
+          game.modules.get(MODULE_ID).myApp.close({ smallTime: true });
         }, 200);
       } else {
         // Make sure there isn't already an instance of the app rendered.
         // Fire off a close() just in case, clears up some stuck states.
         if (SmallTimeApp._isOpen) {
-          game.modules.get('smalltime').myApp.close({ smallTime: true });
+          game.modules.get(MODULE_ID).myApp.close({ smallTime: true });
         }
-        game.modules.get('smalltime').myApp = await new SmallTimeApp().render(true);
-        game.settings.set('smalltime', 'visible', true);
+        game.modules.get(MODULE_ID).myApp = await new SmallTimeApp().render(true);
+        game.settings.set(MODULE_ID, 'visible', true);
       }
-    } else if (game.settings.get('smalltime', 'visible') === true) {
-      game.modules.get('smalltime').myApp = await new SmallTimeApp().render(true);
+    } else if (game.settings.get(MODULE_ID, 'visible') === true) {
+      game.modules.get(MODULE_ID).myApp = await new SmallTimeApp().render(true);
     }
   }
 
   // Get the date from various calendar providers.
   static async updateDate() {
-    let displayDate = Helpers.getDate(game.settings.get('smalltime', 'calendar-provider'), game.settings.get('smalltime', 'date-format'));
+    let displayDate = Helpers.getDate(game.settings.get(MODULE_ID, 'calendar-provider'), game.settings.get(MODULE_ID, 'date-format'));
 
     $('#dateDisplay').html(displayDate);
 
     // Save this string so we can display it on initial load-in,
     // before the calendar provider is ready.
-    if (game.user.isGM) await game.settings.set('smalltime', 'current-date', displayDate);
+    if (game.user.isGM) await game.settings.set(MODULE_ID, 'current-date', displayDate);
   }
 }
 
