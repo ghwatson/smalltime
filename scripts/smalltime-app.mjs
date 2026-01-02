@@ -1136,7 +1136,8 @@ class SmallTimeApp extends FormApplication {
 
     // If requested, adjust the scene's Darkness level.
     const currentScene = canvas.scene;
-    if (currentScene.getFlag('smalltime', 'darkness-link') && game.modules.get('smalltime').controlAuth) {
+    if (currentScene.getFlag('smalltime', 'darkness-link')) {
+
       let darknessValue = canvas.darknessLevel;
       const maxD = game.settings.get('smalltime', 'max-darkness');
       const minD = game.settings.get('smalltime', 'min-darkness');
