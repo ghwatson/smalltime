@@ -379,6 +379,12 @@ Hooks.on('canvasReady', () => {
   const userOpacity = game.settings.get('smalltime', 'opacity');
   document.documentElement.style.setProperty('--SMLTME-opacity', userOpacity);
 
+  // Refresh Darkness even if the viewer isn't a GM / controller.
+  const thisScene = game.scenes.viewed;
+  if (thisScene?.getFlag('smalltime', 'darkness-link')) {
+    SmallTimeApp.timeTransition(Helpers.getWorldTimeAsDayTime());
+  }
+
   if (game.modules.get('smalltime').controlAuth) {
     const darknessDefault = game.settings.get('smalltime', 'darkness-default');
     const visDefault = game.settings.get('smalltime', 'player-visibility-default');
@@ -393,10 +399,7 @@ Hooks.on('canvasReady', () => {
       thisScene.setFlag('smalltime', 'player-vis', visDefault);
     }
 
-    // Refresh the current scene's Darkness level if it should be linked.
-    if (thisScene.getFlag('smalltime', 'darkness-link')) {
-      SmallTimeApp.timeTransition(Helpers.getWorldTimeAsDayTime());
-    }
+
     // Refresh the current scene BG for the settings dialog.
     Helpers.grabSceneSlice();
   }
